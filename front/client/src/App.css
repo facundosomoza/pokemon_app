@@ -1,0 +1,223 @@
+.home-container {
+  background-image: url(./img-pokemon/Pokemon-Logo.jpg);
+  background-size: cover;
+
+  width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho de la pantalla */
+  height: 100vh; /* Asegúrate de que el contenedor ocupe toda la altura de la pantalla */
+  display: flex; /* Utiliza flexbox para centrar el contenido verticalmente */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  height: 100vh;
+}
+
+.pokemon-list {
+  padding: 20px;
+}
+
+.pokemon-cards {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pokemon-card {
+  width: 300px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, #cccccc, #999999, #666666);
+  cursor: pointer;
+}
+
+.pokemon-card-inner {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-image {
+  width: 200px;
+  height: auto;
+}
+
+.pokemon-details {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pokemon-name {
+  margin: 0;
+}
+
+.pokemon-stats {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pokemon-stats li {
+  margin-bottom: 5px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Alinea elementos a ambos extremos */
+  background: linear-gradient(
+    to bottom right,
+    #ff0000,
+    #ffd700,
+    #007fff,
+    #00ff00,
+    #808080,
+    #ffffff,
+    #000000
+  );
+  border: 2px solid #e0e0e0; /* Borde */
+  border-radius: 5px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+  height: 35px;
+  overflow-y: hidden; /* Evita el desplazamiento horizontal */
+}
+
+.right-input {
+  display: flex;
+  align-items: center;
+}
+
+.left-buttons {
+  margin: 20px;
+}
+
+.search-buttons {
+  display: flex;
+}
+
+.button-search {
+  padding: 10px 20px;
+  background: linear-gradient(to bottom right, #ffffff, #808080, #c0c0c0);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  padding: 10px; /* Aumento del padding */
+  border-radius: 5px;
+  margin-right: 8px;
+  width: 300px;
+}
+
+/* Estilos para el placeholder del input */
+.search-input::placeholder {
+  color: #888; /* Color del texto del placeholder */
+}
+
+/* Estilos para cuando el input está enfocado */
+.search-input:focus {
+  border: 1px solid #007bff; /* Borde al enfocar */
+}
+
+.home-link {
+  display: inline-block;
+  justify-content: flex-start;
+}
+
+.centered-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, #cccccc, #999999, #666666);
+}
+
+.centered-content {
+  text-align: center;
+}
+
+.pokemon-image {
+  display: block;
+  margin: 0 auto;
+}
+
+.create-pokemon-form {
+  max-width: 450px; /* Ajusta el ancho máximo del formulario según sea necesario */
+  margin: 0 auto; /* Centra el formulario horizontalmente en la pantalla */
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 10px; /* Agrega espacio entre cada grupo de etiqueta e input */
+}
+
+label {
+  width: 100px; /* Ancho fijo para las etiquetas */
+  text-align: right; /* Alinea las etiquetas a la derecha */
+  margin-right: 10px; /* Agrega un margen derecho para separar la etiqueta del input */
+}
+
+.input-field {
+  width: 300px;
+  padding: 8px; /* Ajusta el relleno del input */
+  border: 1px solid #ccc; /* Agrega un borde alrededor del input */
+  border-radius: 5px; /* Agrega bordes redondeados al input */
+  font-size: 14px; /* Ajusta el tamaño de la fuente del input */
+  box-sizing: border-box; /* Incluye el borde y el relleno en el ancho total del input */
+  margin-left: 10px; /* Agrega un margen izquierdo para separar el input de la etiqueta */
+}
+
+.button-create-pk {
+  margin-top: 10px; /* Agrega margen superior para separar el botón de los inputs */
+  padding: 10px 20px; /* Ajusta el relleno del botón */
+  background: linear-gradient(
+    to bottom right,
+    #ffffff,
+    #808080,
+    #c0c0c0
+  ); /* Fondo del botón con gradiente */
+  color: #ffffff; /* Color del texto del botón */
+  text-decoration: none; /* Quita la subrayado del texto */
+  border-radius: 5px; /* Agrega bordes redondeados al botón */
+  border: none; /* Quita el borde del botón */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-size: 14px; /* Ajusta el tamaño de la fuente del botón */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8vh; /* Ajusta este valor según sea necesario para centrar verticalmente */
+}
+
+.button {
+  margin-right: 10px; /* Margen a la derecha del botón */
+  padding: 8px 12px; /* Ajuste de relleno para el botón */
+  border: none; /* Quitar el borde del botón */
+  background: linear-gradient(to right, #98fb98, #4caf50, #008000);
+  color: white; /* Color del texto del botón */
+  font-size: 14px; /* Tamaño de fuente del botón */
+  cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+}
+
+.select {
+  margin-right: 10px; /* Margen a la derecha de los selects */
+  padding: 6px; /* Ajuste de relleno para los selects */
+  font-size: 14px; /* Tamaño de fuente para los selects */
+}
