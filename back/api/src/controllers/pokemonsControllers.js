@@ -39,7 +39,7 @@ const getPokemonsFromDataBase = async () => {
         velocidad,
         altura,
         peso,
-        tipos: Types.map((type) => ({ id: type.id, name: type.name })),
+        tipos: Types.map((type) => type.name),
         createdInDb: true,
       };
     });

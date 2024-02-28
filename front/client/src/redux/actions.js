@@ -27,7 +27,9 @@ export const getPokemonName = (pokemonName) => {
         `http://localhost:3001/?name=${pokemonName}`
       );
       console.log(response.data);
-      return dispatch({ type: GET_POKEMONS, payload: response.data });
+      if (response.data.length > 0) {
+        return dispatch({ type: GET_POKEMONS, payload: response.data });
+      }
     } catch (error) {
       alert("nobre de pokemon no existe");
     }

@@ -35,12 +35,12 @@ const SearchBar = () => {
         if (foundPokemon) {
           console.log(`El Pokémon ${searchPokemon} fue encontrado.`);
           // Aquí puedes realizar acciones adicionales si se encuentra el Pokémon
+          setSearchPerformed(true); // Marcar que se ha realizado una búsqueda
+          setSearchPokemon(""); // Limpiar el campo de búsqueda
         } else {
           alert(`The Pokémon ${searchPokemon} does not exist.`);
-          dispatch(getPokemons());
+          //dispatch(getPokemons());
         }
-        setSearchPerformed(true); // Marcar que se ha realizado una búsqueda
-        setSearchPokemon(""); // Limpiar el campo de búsqueda
       })
       .catch((error) => {
         console.error("Error al buscar el Pokémon:", error);

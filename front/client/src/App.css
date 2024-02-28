@@ -221,3 +221,7 @@ label {
   padding: 6px; /* Ajuste de relleno para los selects */
   font-size: 14px; /* Tamaño de fuente para los selects */
 }
+
+.error-message {
+  color: red;
+}

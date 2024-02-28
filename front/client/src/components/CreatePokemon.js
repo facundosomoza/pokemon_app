@@ -13,7 +13,9 @@ const CreatePokemon = () => {
 
   const pokemonTypes = useSelector((state) => state.types);
 
-  const [formData, setFormData] = useState({
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const EMPTY_STATE = {
     name: "",
     image: "",
     vida: "",
@@ -23,8 +25,23 @@ const CreatePokemon = () => {
     altura: "",
     peso: "",
     types: [],
-  });
-  const [message, setMessage] = useState("");
+  };
+
+  const EMPTY_ERROR_MESSAGES = {
+    name: "",
+    image: "",
+    vida: "",
+    ataque: "",
+    defensa: "",
+    velocidad: "",
+    altura: "",
+    peso: "",
+    types: "",
+  };
+
+  const [formData, setFormData] = useState({ ...EMPTY_STATE });
+
+  const [errorMessages, setErrorMessages] = useState(EMPTY_ERROR_MESSAGES);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,63 +64,65 @@ const CreatePokemon = () => {
     setFormData(newFormData);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
+  const validateForm = () => {
     let isValid = true;
 
+    const newErrorMessages = { ...EMPTY_ERROR_MESSAGES };
+
     if (!formData.name.trim()) {
-      setMessage("Please, insert a Pokémon name.");
+      newErrorMessages.name = "Please, insert a Pokémon name.";
       isValid = false;
     }
     if (!formData.image.trim()) {
-      setMessage("Please, select an image.");
+      newErrorMessages.image = "Please, insert an image URL.";
       isValid = false;
     }
     if (!formData.vida.trim()) {
-      setMessage("Please, insert a value.");
+      newErrorMessages.vida = "Please, insert a value.";
       isValid = false;
     }
     if (!formData.ataque.trim()) {
-      setMessage("Please, insert a value.");
+      newErrorMessages.ataque = "Please, insert a value.";
       isValid = false;
     }
     if (!formData.defensa.trim()) {
-      setMessage("Please, insert a value.");
+      newErrorMessages.defensa = "Please, insert a value.";
       isValid = false;
     }
     if (!formData.velocidad.trim()) {
-      setMessage("Please, insert a value.");
+      newErrorMessages.velocidad = "Please, insert a value.";
       isValid = false;
     }
     if (!formData.altura.trim()) {
-      setMessage("Please, insert a value.");
+      newErrorMessages.altura = "Please, insert a value.";
       isValid = false;
     }
     if (!formData.peso.trim()) {
-      setMessage("Please, insert a value.");
+      newErrorMessages.peso = "Please, insert a value.";
       isValid = false;
     }
-    if (!formData.types.length === 0) {
-      setMessage("Please, select a type.");
+    if (formData.types.length === 0) {
+      newErrorMessages.types = "Please, select a type.";
       isValid = false;
     }
 
-    if (isValid) {
+    setErrorMessages(newErrorMessages);
+
+    return isValid;
+  };
+
+  const handleSubmit = async (event) => {
+    setIsSubmitted(true);
+
+    event.preventDefault();
+
+    if (validateForm()) {
       dispatch(createPokemons(formData, history));
-      setFormData({
-        name: "",
-        image: "",
-        hp: "",
-        attack: "",
-        defense: "",
-        speed: "",
-      });
     }
   };
 
   useEffect(() => {
-    console.log(formData);
+    validateForm();
   }, [formData]);
 
   return (
@@ -120,8 +139,11 @@ const CreatePokemon = () => {
               className="input-field"
             />
           </label>
-          <div>{message}</div>
+          <div className="error-message">
+            {isSubmitted && errorMessages.name ? errorMessages.name : ""}
+          </div>
         </div>
+
         <div className="form-group">
           <label>
             Image URL:
@@ -134,6 +156,10 @@ const CreatePokemon = () => {
             />
           </label>
         </div>
+        <div className="error-message">
+          {isSubmitted && errorMessages.image ? errorMessages.image : ""}
+        </div>
+
         <div className="form-group">
           <label>
             Vida:
@@ -145,6 +171,9 @@ const CreatePokemon = () => {
               className="input-field"
             />
           </label>
+        </div>
+        <div className="error-message">
+          {isSubmitted && errorMessages.vida ? errorMessages.vida : ""}
         </div>
         <div className="form-group">
           <label>
@@ -158,6 +187,9 @@ const CreatePokemon = () => {
             />
           </label>
         </div>
+        <div className="error-message">
+          {isSubmitted && errorMessages.ataque ? errorMessages.ataque : ""}
+        </div>
         <div className="form-group">
           <label>
             Defensa:
@@ -169,6 +201,9 @@ const CreatePokemon = () => {
               className="input-field"
             />
           </label>
+        </div>
+        <div className="error-message">
+          {isSubmitted && errorMessages.defensa ? errorMessages.defensa : ""}
         </div>
         <div className="form-group">
           <label>
@@ -182,6 +217,11 @@ const CreatePokemon = () => {
             />
           </label>
         </div>
+        <div className="error-message">
+          {isSubmitted && errorMessages.velocidad
+            ? errorMessages.velocidad
+            : ""}
+        </div>
         <div className="form-group">
           <label>
             Altura:
@@ -194,6 +234,9 @@ const CreatePokemon = () => {
             />
           </label>
         </div>
+        <div className="error-message">
+          {isSubmitted && errorMessages.altura ? errorMessages.altura : ""}
+        </div>
         <div className="form-group">
           <label>
             Peso:
@@ -205,6 +248,9 @@ const CreatePokemon = () => {
               className="input-field"
             />
           </label>
+        </div>
+        <div className="error-message">
+          {isSubmitted && errorMessages.peso ? errorMessages.peso : ""}
         </div>
         <div className="form-group">
           <label>
@@ -223,6 +269,10 @@ const CreatePokemon = () => {
               ))}
             </select>
           </label>
+        </div>
+
+        <div className="error-message">
+          {isSubmitted && errorMessages.types ? errorMessages.types : ""}
         </div>
 
         <button type="submit" className="button-create-pk">
